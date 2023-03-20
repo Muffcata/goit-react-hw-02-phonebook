@@ -9,7 +9,7 @@ export class ContactForm extends Component {
   handleSubmit = e => {
     const form = e.target;
     e.preventDefault();
-    this.props.handleSubmit(this.state);
+    this.props.onSubmit(this.state);
     form.reset();
   };
   handleChange = e => {
