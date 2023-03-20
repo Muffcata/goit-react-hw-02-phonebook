@@ -1,30 +1,43 @@
 import React, { Component } from 'react';
+import { nanoid } from 'nanoid';
 
+const INITIAL_STATE = {
+  name: '',
+  number: '',
+};
 export class ContactForm extends Component {
   state = {
-    name: '',
-    number: '',
+    ...INITIAL_STATE,
   };
 
   handleSubmit = e => {
-    const form = e.target;
     e.preventDefault();
-    this.props.onSubmit(this.state);
-    form.reset();
+    // const { name, number } = this.state;
+
+    this.props.onSubmit({ ...this.state });
+    this.reset();
   };
+
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
+  reset = () => {
+    this.setState({ ...INITIAL_STATE });
+  };
+
   render() {
+    const { name, number } = this.state;
+    const nameInputId = nanoid();
+    const numberInputId = nanoid();
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="name">
+        <label htmlFor={nameInputId}>
           Name
           <input
-            id="name"
-            value={this.state.name}
+            id={nameInputId}
+            value={name}
             onChange={this.handleChange}
             type="text"
             name="name"
@@ -33,11 +46,11 @@ export class ContactForm extends Component {
             required
           />
         </label>
-        <label htmlFor="number">
+        <label htmlFor={numberInputId}>
           Number
           <input
-            id="number"
-            value={this.state.number}
+            id={numberInputId}
+            value={number}
             onChange={this.handleChange}
             type="tel"
             name="number"
