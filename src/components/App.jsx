@@ -12,7 +12,13 @@ export class App extends Component {
     ],
     filter: '',
   };
-  handlefilter = e => {
+
+  // addContact = (name, number) => {
+  //   // let contactId = nanoid();
+
+  // };
+
+  handleFilter = e => {
     this.setState({ filter: e.currentTarget.value });
   };
 
