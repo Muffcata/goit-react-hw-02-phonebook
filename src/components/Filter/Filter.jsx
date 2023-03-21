@@ -1,14 +1,15 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import style from '../Filter/Filter.module.css';
 
 export class Filter extends Component {
   render() {
     const { filter } = this.props;
     return (
-      <div>
-        <label>
-          Find contacts by name
-          <input onChange={filter} type="text"></input>
+      <div className={style.wrapper}>
+        <label className={style.label}>
+          Find contacts by name:
+          <input className={style.input} onChange={filter} type="text"></input>
         </label>
       </div>
     );
