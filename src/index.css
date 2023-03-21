@@ -14,10 +14,13 @@ code {
     monospace;
 }
 
-h1,
+h1 {
+  font-size: 30px;
+  margin: 41px;
+  color: rgb(54, 39, 39);
+}
 h2 {
-  font-size: 25px;
-  padding: 10px;
-  margin: 33px;
+  font-size: 22px;
+  margin: 41px;
   color: rgb(54, 39, 39);
 }
