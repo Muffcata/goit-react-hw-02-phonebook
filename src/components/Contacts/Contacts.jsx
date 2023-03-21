@@ -25,7 +25,7 @@ export class Contacts extends Component {
 
 export default Contacts;
 
-Form.propTypes = {
+Contacts.propTypes = {
   deleteContact: PropTypes.func,
   contacts: PropTypes.array,
 };
