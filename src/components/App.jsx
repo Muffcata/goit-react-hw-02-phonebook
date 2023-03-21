@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
-// import Contacts from './Contacts/Contacts';
 import ContactList from './Contacts/Contacts';
+import Filter from './Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -15,20 +15,30 @@ export class App extends Component {
     filter: '',
   };
 
-  addContactToContacts = contact => {
-    this.setState({
-      contacts: [...this.state.contacts, contact],
-    });
+  addContactToContacts = ({ name, number }) => {
+    const contact = {
+      id: nanoid(),
+      name,
+      number,
+    };
+    let contacts = [...this.state.contacts];
+    const names = contacts.map(contact => contact.name);
+    if (!names.find(i => i === name)) {
+      this.setState({
+        contacts: [...this.state.contacts, contact],
+      });
+    } else {
+      alert(`${name} is already in contacts`);
+    }
   };
-
   handleFilter = e => {
-    this.setState({ filter: e.currentTarget.value });
+    this.setState({ filter: e.currentTarget.value.toLowerCase() });
   };
 
   filterContacts = () => {
     const { contacts, filter } = this.state;
     return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+      contact.name.toLowerCase().includes(filter)
     );
   };
   render() {
@@ -39,7 +49,7 @@ export class App extends Component {
         <ContactForm onSubmit={this.addContactToContacts} />
 
         <h2>Contacts</h2>
-        {/* <Filter /> */}
+        <Filter filter={this.handleFilter} />
         <ContactList contacts={filterContacts} />
       </div>
     );

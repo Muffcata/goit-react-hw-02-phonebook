@@ -8,8 +8,9 @@ export class Contacts extends Component {
         {contacts.map(({ id, name, number }) => (
           <li key={id}>
             <div>
-              <p>Name: {name}</p>
-              <p>Number: {number}</p>
+              <p>
+                Name: {name} ~ tel: {number}
+              </p>
             </div>
           </li>
         ))}
