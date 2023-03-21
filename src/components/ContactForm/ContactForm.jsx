@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   name: '',
   number: '',
 };
+
 export class ContactForm extends Component {
   state = {
     ...INITIAL_STATE,
@@ -12,8 +13,7 @@ export class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // const { name, number } = this.state;
-
+    // const { name, number } = this.state
     this.props.onSubmit({ ...this.state });
     this.reset();
   };

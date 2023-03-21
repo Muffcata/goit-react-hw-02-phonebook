@@ -21,6 +21,7 @@ export class App extends Component {
       name,
       number,
     };
+
     let contacts = [...this.state.contacts];
     const names = contacts.map(contact => contact.name);
     if (!names.find(i => i === name)) {
@@ -41,6 +42,12 @@ export class App extends Component {
       contact.name.toLowerCase().includes(filter)
     );
   };
+  deleteContact = user => {
+    this.setState(state => ({
+      contacts: state.contacts.filter(contact => contact.id !== user),
+    }));
+  };
+
   render() {
     const filterContacts = this.filterContacts();
     return (
@@ -50,7 +57,10 @@ export class App extends Component {
 
         <h2>Contacts</h2>
         <Filter filter={this.handleFilter} />
-        <ContactList contacts={filterContacts} />
+        <ContactList
+          contacts={filterContacts}
+          deleteContact={this.deleteContact}
+        />
       </div>
     );
   }
