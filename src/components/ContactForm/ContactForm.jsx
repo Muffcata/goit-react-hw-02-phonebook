@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 const INITIAL_STATE = {
   name: '',
@@ -66,3 +67,11 @@ export class ContactForm extends Component {
 }
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  handleSubmit: PropTypes.func,
+  handleChange: PropTypes.func,
+  reset: PropTypes.func,
+  name: PropTypes.string,
+  number: PropTypes.string,
+};

@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Contacts extends Component {
   render() {
@@ -23,3 +24,8 @@ export class Contacts extends Component {
 }
 
 export default Contacts;
+
+Form.propTypes = {
+  deleteContact: PropTypes.func,
+  contacts: PropTypes.array,
+};
